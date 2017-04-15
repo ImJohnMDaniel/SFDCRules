@@ -1,60 +1,68 @@
-public class Stack {
-    
-    private List<Expression> lstValues ;
+public class Stack
+{
+    private List<Expression> lstValues = new List<Expression>();
     private Integer index = -1;
-    
-    public Stack(){
-        lstValues = new List<Expression>();
-        index = -1;
-    }
-    
-    public Expression pop(){
-        if(index <= -1){
+
+    public Expression pop()
+    {
+        if (index <= -1)
+        {
             return null;
-        } 
-        else{
-            Expression e = lstValues[index]; 
-            lstValues.remove(index); 
+        }
+        else
+        {
+            Expression e = lstValues[index];
+
+            lstValues.remove(index);
+
             index--;
+
             return e;
         }
     }
-    
+
     /**
-     * used to look at the object at the top of this stack 
+     * used to look at the object at the top of this stack
      * without removing it from the stack.
-     * */
-    public Expression peek(){
-        if(index <= -1){
+     **/
+    public Expression peek()
+    {
+        if (index <= -1)
+        {
             return null;
-        } 
-        else{
-            Expression e = lstValues[index]; 
+        }
+        else
+        {
+            Expression e = lstValues[index];
+
         	return e;
-        } 
+        }
     }
-    
-    public void push(Expression e){
+
+    public void push(Expression e)
+    {
         lstValues.add(e);
+
         index++;
     }
-    
-    public Boolean isEmpty(){
-        if(index <= -1){
-            return true;
-        } 
-        else{
-            return false;
-        } 
+
+    public Boolean isEmpty()
+    {
+        return index <= -1;
     }
-    
-    public void printStack(){
+
+    public void printStack()
+    {
         System.debug(Logginglevel.ERROR,'----- stack print start ----- ');
+
         Integer tmpCounter = index;
-        while(tmpCounter > -1){
-            System.debug(Logginglevel.ERROR,lstValues[tmpCounter]);
+
+        while (tmpCounter > -1)
+        {
+            System.debug(Logginglevel.ERROR, lstValues[tmpCounter]);
             tmpCounter--;
-        } 
+        }
+
         System.debug(Logginglevel.ERROR,'----- stack print finish ----- ');
     }
 }
